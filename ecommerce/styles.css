@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.producto {
+  border: 2px solid black;
+  width: 400px;
+  height: 300px;
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: bold;
+  color: peru;
+}
+
+.dark {
+  background-color: black;
+}
