@@ -1,0 +1,14 @@
+#title {
+  font-size: 32px;
+  font-weight: bold;
+  color: peru;
+}
+
+.alimento {
+  border: 2px solid black;
+  width: 500px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

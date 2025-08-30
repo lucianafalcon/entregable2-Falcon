@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.productos {
+.products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -12,13 +12,13 @@
   gap: 20px;
 }
 
-.producto {
+.product {
   border: 2px solid black;
   width: 400px;
   height: 300px;
 }
 
-.titulo {
+.title {
   font-size: 32px;
   font-weight: bold;
   color: peru;

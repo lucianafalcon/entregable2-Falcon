@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="macros.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <nav><a href="./index.html">Home</a></nav>
+
+    <h1 id="title">Macros</h1>
+
+    <input type="text" id="nutrienteInput" placeholder="Nombre" />
+    <input type="text" id="proteInput" placeholder="Proteínas en (g)" />
+    <input type="text" id="carboInput" placeholder="Carbohidratos en (g)" />
+    <input type="text" id="grasasInput" placeholder="Grasas en (g)" />
+    <div id="resultado"></div>
+    <div class="alimentos"></div>
+    <button id="btn-comunes">+</button>
+    <button id="agregar-manual">Agregar</button>
+    <div id="totales">
+      <p>Proteínas: <span id="total-prote">0</span> g</p>
+      <p>Carbohidratos: <span id="total-carbo">0</span> g</p>
+      <p>Grasas: <span id="total-grasa">0</span> g</p>
+    </div>
+    <script src="macros.js"></script>
+  </body>
+</html>
