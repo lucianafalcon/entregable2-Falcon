@@ -27,6 +27,11 @@ const actualizarTotales = () => {
   document.getElementById("total-grasa").textContent = total.grasa;
 };
 
+// DOMContentLoaded: es un evento del navegador que se dispara cuando el HTML de la página ya se cargo completa
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarTotales();
+});
+
 //-----------------
 //simulo db
 
@@ -81,6 +86,8 @@ const alimentos = [
 //-----------------
 // macros add con boton
 
+let fechaSeleccionada = localStorage.getItem("fechaValida") || ""; //guardo macros por fecha
+
 const btnComunes = document.getElementById("btn-comunes");
 
 btnComunes.addEventListener("click", () => {
@@ -105,13 +112,15 @@ btnComunes.addEventListener("click", () => {
   renderizarAlimentos();
 });
 
-let sumador = JSON.parse(localStorage.getItem("sumador")) || [];
+let sumador =
+  JSON.parse(localStorage.getItem(`sumador-${fechaSeleccionada}`)) || [];
 
 const agregarAlimento = (id) => {
   let alimentoEncontrado = alimentos.find((alimento) => alimento.id === id);
   console.log(alimentoEncontrado);
+
   sumador.push(alimentoEncontrado);
-  localStorage.setItem("sumador", JSON.stringify(sumador));
+  localStorage.setItem(`sumador-${fechaSeleccionada}`, JSON.stringify(sumador));
 
   actualizarTotales();
 };
@@ -127,6 +136,7 @@ const btnAgregarManual = document.getElementById("agregar-manual");
 
 const agregarAlimentoManual = (n, p, c, g) => {
   let alimentoManual = {
+    id: Date.now(), //les agrego un id random por date a los macros nuevos
     nombre: n,
     prote: Number(p),
     carbo: Number(c),
@@ -134,7 +144,10 @@ const agregarAlimentoManual = (n, p, c, g) => {
   };
 
   sumador.push(alimentoManual);
-  localStorage.setItem("sumador", JSON.stringify(sumador));
+
+  alimentos.push(alimentoManual); // sumo a la lista gral
+
+  localStorage.setItem(`sumador-${fechaSeleccionada}`, JSON.stringify(sumador));
   actualizarTotales();
 };
 
