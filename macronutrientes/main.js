@@ -3,6 +3,8 @@ Algoritmo para calcular la cantidad de nutrientes consumidas por día.
 Falcon, Luciana.
 **********************************************************************/
 
+const linkMacros = document.getElementById("linkMacros");
+
 const validarFecha = (fecha) => {
   if (fecha.length !== 8 || typeof fecha !== "string") {
     return true;
@@ -21,12 +23,12 @@ const validarFecha = (fecha) => {
 // saludo
 const nombre_input = document.getElementById("nombreInput");
 const saludo = document.getElementById("saludo");
-const linkMacros = document.getElementById("linkMacros");
+const MsjErrorFecha = document.getElementById("MsjErrorFecha");
 
 function mostrarSaludo() {
   const nombre = nombre_input.value.trim();
   if (nombre !== "") {
-    saludo.textContent = `¡Hola, ${nombre}!`;
+    saludo.textContent = `¡Buen día, ${nombre}!`;
   } else {
     saludo.textContent = "Por favor, ingresa tu nombre.";
   }
@@ -45,10 +47,13 @@ fecha_input.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     const fecha = fecha_input.value.trim();
     if (!validarFecha(fecha)) {
-      saludo.textContent = `Fecha válida: ${fecha}`;
       linkMacros.style.display = "inline";
+      MsjErrorFecha.textContent = " ";
+      // guarda la fecha en localStorage para que macros.js la use
+      localStorage.setItem("fechaValida", fecha);
     } else {
-      saludo.textContent = "Fecha inválida, ingrese en formato ddmmaaaa.";
+      MsjErrorFecha.textContent =
+        "Fecha inválida, ingrese en formato ddmmaaaa.";
       linkMacros.style.display = "none";
     }
   }
